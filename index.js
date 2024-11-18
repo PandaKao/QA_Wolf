@@ -45,25 +45,27 @@ async function sortHackerNewsArticles() {
     console.log('Hacker news has less than 100 articles.');
   }
 
+  console.log(hundredArticles);
+
   // time validation
-  const validationErrors = [];
+  function validateArticles(hundredArticles) {
+    const validationErrors = [];
 
-  // checks if the current timestamp is later than the previous timestamp
-  for (let i = 1; i < hundredArticles.length; i++) {
-    if (hundredArticles[i].timestamp > hundredArticles[i - 1].timestamp) {
-      validationErrors.push(`Issue at index ${i}`);
+    // checks if the current timestamp is later than the previous timestamp
+    for (let i = 1; i < hundredArticles.length; i++) {
+      if (hundredArticles[i].timestamp > hundredArticles[i - 1].timestamp) {
+        validationErrors.push(`Issue at index ${i}`);
+      }
+    };
+
+    if (validationErrors.length > 0) {
+      return validationErrors;
+    } else {
+      return 'Valdiation passed: Articles are sorted from newest to oldest.';
     }
-  };
-
-  if (validationErrors.length > 0) {
-    console.log(`Validation failed: Articles are not sorted from newest to oldest with ${validationErrors.length} error(s).`);
-    validationErrors.forEach((error) => {
-      console.log(error);
-    })
-  } else {
-    console.log(hundredArticles);
-    console.log('Validation passed: Articles are sorted from newest to oldest');
   }
+
+  console.log(validateArticles(hundredArticles));
 }
 
 (async () => {
