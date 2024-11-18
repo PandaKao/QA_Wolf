@@ -36,10 +36,15 @@ test('should return message when there are fewer than 100 articles', async () =>
 
   await page.goto('https://news.ycombinator.com/newest');
   const articles = mock_articles;
+  let validationMessage = '';
 
   if (articles.length < 100) {
-    console.log('Hacker news has less than 100 articles.');
+    validationMessage = 'Hacker news has less than 100 articles.';
+  } else {
+    validationMessage = 'Hacker news does not have less than 100 articles.';
   }
+
+  expect(validationMessage).toContain('Hacker news has less than 100 articles.');
 })
 
 test.beforeEach(async ({ page }) => {
