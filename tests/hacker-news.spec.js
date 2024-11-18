@@ -25,6 +25,7 @@ test('should return message when there are fewer than 100 articles', async () =>
   const context = await browser.newContext();
   const page = await context.newPage();
 
+  // intercept network request and inject mock articles
   await page.route('**/newest', (route, request) => {
     route.fulfill({
       status: 200,
