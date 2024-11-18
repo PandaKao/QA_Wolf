@@ -44,7 +44,7 @@ test('should return message when there are fewer than 100 articles', async () =>
     validationMessage = 'Hacker news does not have less than 100 articles.';
   }
 
-  expect(validationMessage).toHaveText('Hacker news has less than 100 articles.');
+  expect(validationMessage).toContain('Hacker news has less than 100 articles.');
 })
 
 test.beforeEach(async ({ page }) => {
