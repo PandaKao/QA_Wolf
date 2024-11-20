@@ -1,9 +1,6 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
 const { chromium } = require("playwright");
 
-// add tests, make github actions work, do mocks, negative tests, edgecases,check everything
-// cypress tests figure out how to incorporate some of them
-
 async function sortHackerNewsArticles() {
   // launch browser
   const browser = await chromium.launch({ headless: false });
@@ -44,8 +41,6 @@ async function sortHackerNewsArticles() {
   if (hundredArticles.length < 100) {
     console.log('Hacker news has less than 100 articles.');
   }
-
-  console.log(hundredArticles);
 
   // time validation
   function validateArticles(hundredArticles) {
